@@ -74,12 +74,12 @@ const App = () => {
         </thead>
 
         <tbody>
-          {staff.map((data, index) => (
+          {staff.map((a, index) => (
             <tr key={index}>
-              <td>{data.name}</td>
-              <td>{data.id}</td>
-              <td>{data.studentCount}</td>
-              <td>{data.email}</td>
+              <td>{a.name}</td>
+              <td>{a.id}</td>
+              <td>{a.studentCount}</td>
+              <td>{a.email}</td>
             </tr>
           ))}
         </tbody>
@@ -95,12 +95,12 @@ const App = () => {
         </thead>
 
         <tbody>
-          {student.map((data, index) => (
+          {student.map((a, index) => (
             <tr key={index}>
-              <td>{data.name}</td>
-              <td>{data.id}</td>
-              <td>{data.staffid}</td>
-              <td>{data.email}</td>
+              <td>{a.name}</td>
+              <td>{a.id}</td>
+              <td>{a.staffid}</td>
+              <td>{a.email}</td>
             </tr>
           ))}
         </tbody>
