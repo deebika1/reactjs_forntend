@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-const App = () => {
+const Webpage = () => {
   const [staff, setstaff] = React.useState([]);
   const [student, setstudent] = React.useState([]);
-  const [name, setName] = React.useState("");
-  const [id, setId] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [staff1, setStaff1] = React.useState("");
+  const [name, setname] = React.useState("");
+  const [id, setid] = React.useState("");
+  const [staffid, setstaffid] = React.useState("");
+  const [email, setemail] = React.useState("");
   useEffect(() => {
     //function componentDidMount() {
     fetch("http://localhost:5000/student")
@@ -18,51 +18,66 @@ const App = () => {
       .then((data) => setstaff(data));
     console.log("staff", staff);
   });
-  console.log(student);
-  console.log(name, email, id, staff1);
-  function display() {
-    console.log(name, email, id, staff1);
+  function add() {
     fetch("http://localhost:5000/student", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, id, staff1 }),
+      body: JSON.stringify({ name, id, staffid, email }),
     });
-
-    setName("");
-    setId("");
-    setEmail("");
-    setStaff1("");
+    console.log({ name, id, staffid, email });
+    setname("");
+    setstaffid("");
+    setid("");
+    setemail("");
   }
+  //  function delete(){
+  //    fetch("http://localhost:5000/student",{
+  //      method:"DELETE",
+  //      headers:{
+  //        "Content":"application/json"
+  //      },
+  //      body:JSON.stringify({
+  //        name:
+  //      })
+  //    })
+  //  }
+
+  console.log(student);
+
   return (
     <div>
       <h1>Staff Students Details</h1>
-      <label>enter the user name</label>
+      <label>Name</label>
       <input
         type="text"
         value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <label>enter the id </label>
+        onChange={(e) => setname(e.target.value)}
+      ></input>
+      <br />
+      <label>Id</label>
       <input
         type="text"
         value={id}
-        onChange={(event) => setId(event.target.value)}
-      />
-      <label>enter the email</label>
+        onChange={(e) => setid(e.target.value)}
+      ></input>
+      <br />
+      <label>Staff-Id</label>
+      <input
+        type="text"
+        value={staffid}
+        onChange={(e) => setstaffid(e.target.value)}
+      ></input>
+      <br />
+      <label>E-mail</label>
       <input
         type="text"
         value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <label>enter the staffid</label>
-      <input
-        type="text"
-        value={staff1}
-        onChange={(event) => setStaff1(event.target.value)}
-      />
-      <button onClick={() => display()}>click me</button>
+        onChange={(e) => setemail(e.target.value)}
+      ></input>
+      <br />
+      <button onClick={() => add()}>Addme</button>
       <table>
         <thead>
           <tr>
@@ -84,6 +99,8 @@ const App = () => {
           ))}
         </tbody>
       </table>
+      <br />
+      <br />
       <table>
         <thead>
           <tr>
@@ -108,4 +125,4 @@ const App = () => {
     </div>
   );
 };
-export default App;
+export default Webpage;
